@@ -1,10 +1,9 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
-	</view>
+	<swiper class="banner" indicator-dots :autoplay="false" circular>
+		<swiper-item v-for="item in pictures" :key="item.id">
+			<image :src="item.url" @tap="onPreviewImage(item.url)" />
+		</swiper-item>
+	</swiper>
 
 </template>
 
@@ -12,7 +11,12 @@
 	export default {
 		data() {
 			return {
-				title: '有点卡卡的aaa'
+				title: '有点卡卡的aaa',
+				// 轮播图
+				pictures: [
+					{ id: 1, url: 'https://sbcyk.online/cykblog/strange_smiley_with_no_background.webp' },
+					{ id: 2, url: 'https://sbcyk.online/cykblog/strange_smiley_with_no_background_white.webp'}
+				]
 			}
 		},
 		onLoad() {
@@ -21,35 +25,25 @@
 		methods: {
 			fuck () {
 				console.log('xixixi fuuuuuuuuuuuuuuuk')
+			},
+			onPreviewImage(url) {
+				// console.log(url)
+				uni.previewImage({
+					urls: this.pictures.map(item => item.url),
+					current: url
+				})
 			}
 		}
 	}
 </script>
 
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+	.banner {
+		width: 750rpx;
+		height: 750rpx;
 	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+	.banner image {
+		width: 750rpx;
+		height: 750rpx;
 	}
 </style>

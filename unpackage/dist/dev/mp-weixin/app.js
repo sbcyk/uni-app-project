@@ -3,6 +3,7 @@ Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const common_vendor = require("./common/vendor.js");
 if (!Math) {
   "./pages/index/index.js";
+  "./pages/my/my.js";
 }
 const _sfc_main = {
   onLaunch: function() {
@@ -15,8 +16,9 @@ const _sfc_main = {
     console.log("App Hide");
   }
 };
+const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "G:/HBuilderXDoc/uni-app-project/App.vue"]]);
 function createApp() {
-  const app = common_vendor.createSSRApp(_sfc_main);
+  const app = common_vendor.createSSRApp(App);
   return {
     app
   };
